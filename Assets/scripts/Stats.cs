@@ -5,6 +5,7 @@ public class Stats : MonoBehaviour
     public float health = 100;
     public float mana = 100;
     public float speed = 5;
+    public float attackRange = 5;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,6 +15,9 @@ public class Stats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

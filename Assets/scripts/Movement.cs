@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     public Vector3 screenPosition, worldPosistion;
+    public float distance;
     public LayerMask ground;
     public Stats stats;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,9 +40,11 @@ public class Movement : MonoBehaviour
             worldPosistion = hit.point;
             worldPosistion.y = transform.position.y;
         }
+        distance = Vector3.Distance(worldPosistion, transform.position);
         //screenPosition.z = Camera.main.nearClipPlane + ground;
         //worldPosistion = Camera.main.ScreenToWorldPoint(screenPosition);
-        for (float t = 0; t < 1; t += Time.deltaTime * stats.speed)
+        float time = distance / stats.speed;
+        for (float t = 0; t < 1; t += Time.deltaTime / time)
         {
             transform.position = Vector3.Lerp(transform.position, worldPosistion, t);
             yield return new WaitForEndOfFrame();
