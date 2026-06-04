@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class CameraController : MonoBehaviour
+public class CameraController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject player;
     private bool isPressed;
@@ -16,7 +17,7 @@ public class CameraController : MonoBehaviour
     {
         if (isPressed)
         {
-            transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 7);
+            transform.position = new Vector3(player.transform.position.x, 8, player.transform.position.z - 7);
 
         }
     }
@@ -33,5 +34,15 @@ public class CameraController : MonoBehaviour
             isPressed = true;
         }
 
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        
     }
 }
